@@ -1,30 +1,75 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/emanuelkoseos/env-minikube-dev
 cluster:
-  clusterName: "minikube"
+  clusterName: minikube
+  devEnvApprovers:
+  - emanuekoseos
+  environmentGitOwner: emanuelkoseos
   gitKind: github
   gitName: github
   gitServer: https://github.com
-  environmentGitOwner: "emanuekoseos"
-  environmentGitPublic: false
-  project: "minikube"
-  provider: kubernetes
   namespace: jx
+  project: minikube
   provider: kubernetes
-gitops: true
 environments:
-- key: dev
-- key: stg
-- key: prd
-- key: demo
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-minikube-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: stg
+  repository: environment-minikube-stg
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: prd
+  repository: environment-minikube-prd
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: demo
+  repository: environment-minikube-demo
+gitops: true
 ingress:
-  domain: ""
+  domain: bibliosystems.net
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: local
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: false
     url: ""
@@ -34,7 +79,11 @@ storage:
   repository:
     enabled: false
     url: ""
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: "master"
+  ref: v1.0.417
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
