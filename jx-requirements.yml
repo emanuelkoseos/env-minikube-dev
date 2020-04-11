@@ -1,15 +1,20 @@
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
+  clusterName: "minikube"
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  environmentGitOwner: "emanuekoseos"
   environmentGitPublic: false
-  project: ""
-  provider: gke
-  zone: ""
+  project: "minikube"
+  provider: kubernetes
+  namespace: jx
+  provider: kubernetes
 gitops: true
 environments:
 - key: dev
-- key: staging
-- key: production
+- key: stg
+- key: prd
+- key: demo
 ingress:
   domain: ""
   externalDNS: false
